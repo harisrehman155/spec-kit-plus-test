@@ -1,19 +1,18 @@
 <!--
 Sync Impact Report:
-Version: 1.0.0 → 1.0.0 (Initial constitution creation)
-Modified Principles: All principles newly defined for web application project
+Version: 1.0.0 → 1.1.0 (Added OOP and type safety principle)
+Modified Principles: None
 Added Sections:
-  - All core principles (5 total)
-  - Development Workflow section
-  - Code Quality Standards section
-  - Governance section
-Removed Sections: None (initial creation)
+  - Principle VI: Object-Oriented Design and Type Safety
+Removed Sections: None
 Templates Status:
-  - ✅ plan-template.md: Constitution Check section already present
-  - ✅ spec-template.md: User scenarios and requirements structure aligned
-  - ✅ tasks-template.md: TDD test-first workflow aligned
+  - ✅ plan-template.md: Constitution Check will validate type hints
+  - ✅ spec-template.md: Requirements aligned
+  - ✅ tasks-template.md: TDD workflow includes type checking
   - ✅ All command files: Generic guidance preserved
-Follow-up TODOs: None
+Follow-up TODOs:
+  - Add mypy configuration in first feature implementation
+  - Update code review checklist to include type hint verification
 -->
 
 # Test Project Constitution
@@ -94,6 +93,22 @@ All application components MUST emit structured logs, metrics, and traces that e
 - Performance profiling for bottleneck identification
 
 **Rationale:** Web applications are distributed systems with complex failure modes. Without observability, debugging production issues is guesswork. Structured logs and metrics enable rapid incident response, proactive alerting, capacity planning, and continuous performance optimization.
+
+### VI. Object-Oriented Design and Type Safety
+
+All Python code MUST follow object-oriented programming principles with comprehensive type hints. Code should be self-documenting through clear class hierarchies, type annotations, and design patterns.
+
+**Requirements:**
+- All functions and methods MUST have type hints for parameters and return values
+- Classes used for encapsulation and data modeling (avoid procedural code)
+- Type hints follow PEP 484 standards (use `typing` module)
+- Complex types documented with TypedDict, Protocol, or dataclasses
+- Static type checking with mypy or similar tools
+- OOP principles applied: encapsulation, inheritance, polymorphism where appropriate
+- No use of `Any` type without justification
+- Generic types used for reusable components
+
+**Rationale:** Type hints catch errors at development time instead of runtime, serve as inline documentation, enable IDE autocomplete and refactoring, and make code more maintainable. Object-oriented design provides clear structure, promotes code reuse, and makes complex systems easier to understand and extend. For a calculator API, this means clear Calculator classes, Operation types, and validated request/response models.
 
 ## Development Workflow
 
@@ -191,4 +206,4 @@ Unjustified complexity violations will be rejected in code review.
 
 For day-to-day development instructions and agent behavior, refer to `CLAUDE.md` in the project root. That file contains operational guidance for AI assistants working on this project.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-03 | **Last Amended**: 2025-12-03
+**Version**: 1.1.0 | **Ratified**: 2025-12-03 | **Last Amended**: 2025-12-03
